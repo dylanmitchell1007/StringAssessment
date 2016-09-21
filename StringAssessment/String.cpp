@@ -1,118 +1,247 @@
 #include<iostream>
-#include "String.h"		
+#include "String.h"
 
-//CREATE A BASIC STRING UTILITY CLASS THAT WILL MAKE WORKING WITH
-//CHARACTER ARRAYS EASIER TO MANAGE.
-//SHOULD CONTAIN THE FUNCTIONS LISTED ON STRING CLASS REQUIREMENTS
 
-String::String(char str[])
+
+String::String(char *Tank) 
 {
-	for (int i = 0; str[i] != '\0'; i++)
-	
+	int i;
+	for (i = 0; Tank[i] != '\0'; ++i)
 	{
-		m_data == str;
-
-
-		 
+		m_data[i] = Tank[i];
+						  
 	}
-	str[0];
-	str[1];
-	str[2];
-	str[3];
-	str[4];
-	str[5];
-	str[6];
-	str[7];
-
-	// TODO: Set 'm_data' equal to the value of 'str'
+	m_data[i] = '\0'; //null
+	m_length = i;
 }
-/* TODO: Write Loop Conditional */
+
+//1.)
 int String::Length()
 {
-	for (int i = 0; i < '\0'; i++)
+	return m_length;
+}
+
+//2.)
+char String::index(int Place)
+{
+	std::cout << "Print at Index: " << m_data[Place] << "\n \n";
+	return m_data[Place];
+}
+
+//3.)
+
+bool String::compare(String str)
+{
+	
+	bool equal = true;
+	for(int x = 0;; x++)  
 	{
-		if (m_data[i] != '\0')
+		equal = (m_data[x] == str.m_data[x]) ? true : false; 
+		if (equal == false)
+		{
+			std::cout << "If They are not equal"; 
 			break;
-		cout << m_data[i]; "\n";
-		return i;
+		}
+		if (equal == true) 
+		{
+			std::cout << "If They are equal"; 
+			break;
+		}
+	}
+	return equal; 
+}
+
+//.4) 
+void String::append(String str)
+{
+	int OriginalLength = this->m_length; 
+	int x;
+	for (x = 0; x < str.m_length; ++x) 
+	{
+		m_data[OriginalLength + x] = str.m_data[x]; 
+	}
+	m_data[OriginalLength + x] = '\0'; 
+	std::cout << "append: ";
+	for (int in = 0; m_data[in] != '\0'; in++) 
+	{
+		std::cout << m_data[in];
+	}
+	std::cout << "\n \n";
+}
+
+//.5) 
+void String::prepend(String str)
+{
+	char String2[255];
+
+	int i;
+	for (i = 0; i < str.m_length; ++i) 
+		String2[i] = str.m_data[i];
+	
+	String2[i] = '\0';  
+
+	int oldLength = m_length;
+
+	for (i = 0; i < Length(); ++i) 
+	{
+		String2[oldLength + i] = m_data[i];
+	}
+	String2[oldLength + i] = '\0'; 
+
+	for (i = 0; i < m_length; ++i) 
+	{
+		m_data[i] = String2[i];
 	}
 	
+		m_data[i] = '\0';
+		std::cout << "Prepend: ";
+	
+	for (int in = 0; m_data[in] != '\0'; ++in)
+	
+	std::cout << m_data[in];
+	std::cout << "\n \n";
 }
 
-//2. Certain Index
-int CertainIndex()
+//.6)
+
+const char * String::constCStyle()
 {
-	char test[] = "whateverasdfdsf";	//StringleLength
-	int i = 0;
-	while (test[i] != '\0')
+	const char * constCString = m_data;
+	std::cout << "Const Char *: " << constCString << "\n \n";
+	return constCString;
+}
+
+//.7)
+bool String::Up()
+{
+	std::cout << "Up: ";
+	for (int x = 0; x < Length(); ++x)
 	{
-		i++;
+		if ((int)m_data[x] > 96 && (int)m_data[x] < 123) 
+		{
+			m_data[x] = m_data[x] - 32; 
+		}
+		std::cout << m_data[x]; 
 	}
-	cout << test[0] << "\n";
-	return 0;
-
-
+	std::cout << "\n \n";
+	return false;
 }
-//3. String Compare
-int StringCompare()
+
+//.8)
+
+bool String::Low()
 {
-	bool run = true;
-
-	char strCp[] = "up";
-
-	char strCp2[] = "down";
-
-	strcmp(strCp, strCp2);
-
-	int i = 0;
-
-	while (run = true)
+	std::cout << "Low: ";
+	for (int x = 0; x < Length(); ++x)
 	{
-		if (strCp[i] < strCp2[i])
+		if ((int)m_data[x] > 64 && (int)m_data[x] < 91) 
 		{
-			cout << strCp;
+			m_data[x] = m_data[x] + 32; 
 		}
+		std::cout << m_data[x]; 
+	}
+	std::cout << "\n \n";
+	return false;
+}
 
-		if (strCp[i] > strCp2[i])
-		{
-			cout << strCp2;
-		}
+//.9)
 
-		if (strCp[i] == strCp2[i])
+bool String::findsubstring()
+{
+	bool find = false;
+	const char * sub = { "ee" };
+	int x = 0;
+	for (int x = 0; x < Length(); ++x)
+	{
+		if (m_data[x] == sub[x])
 		{
-			cout << "Same";
+			x++;
+			if (x == 2)
+			{
+				find = true;
+				break;
+			}
 		}
 		else
 		{
-			i++;
-
-			return 0;	//console prints out down.
+			x = 0;
+			find = false;
 		}
-
 	}
-
+	std::cout << "SubString: " << find << "\n \n";
+		return find;
 }
-//4. Append to String to another.
-int AppendtoAnother()
+
+
+int String::findsubstring(char * sub) 
 {
+	String tmp = String(sub);
+	bool match = false;
 
-
-	char coke[] = "Drink";
-	char cola[] = "soda";
-
-	strcpy_s(coke, cola);
-
-	coke[0];
-
-	int i;
-
-	i = 1;
-
-	while ("cola  != 0");
-
-	++i;
-
+	for (int x = 0; x < this->m_length; x++)
+	{
+		if (this->m_data[x] == sub[0])
+		{
+			for (int j = 0; j < tmp.Length(); j++)
+			{
+				if (this->m_data[x + j] == tmp.m_data[j])
+				{
+					match = true;
+				}
+				else
+				{
+					match = false;
+				}
+				if (j == tmp.Length() - 1)
+					return x;
+			}
+		}
+	}
 	return 0;
 }
 
+//.10)
+bool String::findSubStringIndex(int input, char * sub)
+{
+	String temp = String(sub);
+	bool index = false;   
+	int x = 0; 
+	for (int x = input; x < m_length; ++x) 
+	{
+		if (m_data[x] == sub[x]) 
+		{
+			x++; 
+			if (x == temp.m_length)  
+			{
+				index = true; //Keeps this loop going.
+				break;
+			}
+		}
+		else 
+		{
+			x = 0;
+			index = false; 
+		}
+	}
+	std::cout << "SubString at Index: " << index << "\n \n";
+	return index;
+}
+//.11)
+//NEED HELP WITH THIS ONE.... MULTIPLE ATTEMPTS AND FRUSTRATING ERRORS.
+//CODE WAS SO BAD I JUST DELETED IT....
+//Syntax err
 
+//.12) 
+
+
+void String::setstring(char set[])
+{
+	String tmp = String(set);
+
+	int x = 0;
+	for (x = 0; x < tmp.Length(); x++)
+		m_data[x] = tmp.m_data[x];
+	m_data[x] = '\0';
+	m_length = tmp.Length();
+	return;
+}
