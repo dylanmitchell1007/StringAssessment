@@ -22,10 +22,17 @@ int String::Length()
 }
 
 //2.)
-char String::index(int Place)
+char String::index(int Place, int Spot)
 {
-	std::cout << "Print at Index: " << m_data[Place] << "\n \n";
-	return m_data[Place];
+
+	std::cout << "Print at Index: " << m_data[Place] << m_data2[Spot] << "\n \n";
+	return m_data[Place], m_data2[Spot]
+		;
+
+
+
+
+
 }
 
 //3.)
@@ -47,6 +54,7 @@ bool String::compare(String str)
 			std::cout << "If They are equal"; 
 			break;
 		}
+		
 	}
 	return equal; 
 }

@@ -8,13 +8,14 @@ class String
 {
 private:
 		char m_data[255];
+		char m_data2[255];
 		int m_length;
 public:
 	String() {};
 	
 	String(char * T);
 	int Length();
-	char index(int);
+	char index(int,int);
 	bool compare(String Tank);
 	void append(String Tank);
 	void prepend(String Tank);
