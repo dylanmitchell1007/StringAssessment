@@ -80,35 +80,19 @@ void String::append(String str)
 void String::prepend(String str)
 {
 	
-	char String2[255];
-	int oldLength = m_length;
-
-
-
-	int i;
-	for (i = 0; i < str.m_length; ++i)
-		String2[i] = str.m_data[i];
-
-	String2[i] = '\0';
-
-	for (i = 0; i < Length(); ++i)
+	int OriginalLength = this-> m_length;
+	int t;
+	for (t = 0; t < m_length; ++t)
 	{
-		String2[oldLength + i] = m_data[i];
+		m_data[OriginalLength + t] = str.m_data[t];
 	}
-	String2[oldLength + i] = '\0';
-
-	for (i = 0; i < m_length; ++i)
+	m_data[OriginalLength + t] = '\0';
+	std::cout << str.m_data;
+	for (int in = 0; m_data[in] != '\0'; in++)
 	{
-		m_data[i] = String2[i];
-	}
-
-	m_data[i] = '\0';
-	std::cout << "\n \n";
-
-
-	for (int in = 0; m_data[in] != '\0'; ++in)
-
+		m_data[t] = 0;
 		std::cout << m_data[in];
+	}
 	std::cout << "\n \n";
 }
 //.6)
@@ -117,12 +101,13 @@ const char * String::constCStyle()
 {
 	const char * constCStyle = m_data;
 	std::cout << constCStyle;
-	return constCStyle;
+	return m_data;
 }
 
 //.7)
 bool String::Up()
 {
+	int x = 0;
 	std::cout << m_data;
 	for (int x = 0; x < Length(); ++x)
 	{
@@ -130,10 +115,11 @@ bool String::Up()
 		{
 			m_data[x] = m_data[x] - 32;
 		}
-		std::cout << m_data[x];
+		
 	}
+	std::cout << m_data[x];
 	std::cout << "\n \n";
-	return 0;
+	return m_data;
 }
 
 //.8)
@@ -147,6 +133,7 @@ bool String::Low()
 		{
 			m_data[x] = m_data[x] + 32;
 		}
+	
 		std::cout << m_data[x];
 	}
 	std::cout << "\n \n";

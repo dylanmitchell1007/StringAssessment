@@ -20,15 +20,15 @@ int main()
 	// These functions don't even test all of your code
 	firstString.compare(secondString);
 	firstString.append(secondString);
-	firstString.prepend(firstString);
+	firstString.prepend(secondString);
 	int y = firstString.Length();
 	int o = secondString.Length();
 	std::cout << "Length of first Entry: " << y << "\n \n";
 	std::cout << "Length of second Entry: " << o << "\n \n";
 	firstString.constCStyle();
-	std::cout << firstString.findSubStringIndex(2, "Terminate");
 	firstString.Up();
 	firstString.Low();
+	std::cout << firstString.findSubStringIndex(2, "Terminate");
 	firstString.findsubstring();
 	system("pause");
 	return 0;
