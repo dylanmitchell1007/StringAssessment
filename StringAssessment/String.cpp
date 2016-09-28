@@ -22,17 +22,11 @@ int String::Length()
 }
 
 //2.)
-char String::index(int Place, int Spot)
+char String::index(int Place)
 {
 
-<<<<<<< HEAD
-	std::cout << "Print at Index: " << m_data[Place] << m_data2[Spot] << "\n \n";
-	return m_data[Place], m_data2[Spot]
-		;
-=======
 	std::cout << "Print at Index: " << m_data[Place] << "\n \n";
 	return m_data[Place];
->>>>>>> origin/master
 
 
 
@@ -59,16 +53,12 @@ bool String::compare(String str)
 			std::cout << "";
 			break;
 		}
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/master
 	}
 	return true;
 }
 
-//.4
+//.4)
 void String::append(String str)
 {
 	int OriginalLength = this->m_length;
