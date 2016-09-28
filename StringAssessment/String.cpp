@@ -68,7 +68,7 @@ bool String::compare(String str)
 	return true;
 }
 
-//.4) 
+//.4
 void String::append(String str)
 {
 	int OriginalLength = this->m_length;
