@@ -101,43 +101,41 @@ const char * String::constCStyle()
 {
 	const char * constCStyle = m_data;
 	std::cout << constCStyle;
-	return m_data;
+	return constCStyle;
 }
 
 //.7)
-bool String::Up()
+char * String::Up()
 {
-	int x = 0;
-	std::cout << m_data;
+	char x = 0;
 	for (int x = 0; x < Length(); ++x)
 	{
-		if ((int)m_data[x] > 96 && (int)m_data[x] < 123)
+		if ((int)m_data[x] >= 97 && (int)m_data[x] <= 122)
 		{
 			m_data[x] = m_data[x] - 32;
 		}
 		
 	}
-	std::cout << m_data[x];
-	std::cout << "\n \n";
-	return m_data;
+	
+		return m_data;
+	
 }
 
 //.8)
 
-bool String::Low()
+char * String::Low()
 {
-	std::cout << m_data ;
+
 	for (int x = 0; x < Length(); ++x)
 	{
-		if ((int)m_data[x] > 64 && (int)m_data[x] < 91)
+		if ((int)m_data[x] >= 65 && (int)m_data[x] <= 90)
 		{
 			m_data[x] = m_data[x] + 32;
 		}
 	
-		std::cout << m_data[x];
 	}
-	std::cout << "\n \n";
-	return 0;
+	
+	return m_data;
 }
 
 //.9)
@@ -169,35 +167,35 @@ bool String::findsubstring()
 }
 
 
-//int String::findsubstring(char * sub)
-//{
-//	String tmp = String(sub);
-//	bool match = false;
-//
-//	for (int x = 0; x < this->m_length; x++)
-//	{
-//		if (this->m_data[x] == sub[0])
-//		{
-//			for (int j = 0; j < tmp.Length(); j++)
-//			{
-//				if (this->m_data[x + j] == tmp.m_data[j])
-//				{
-//					match = true;
-//				}
-//				else
-//				{
-//					match = false;
-//				}
-//				if (j == tmp.Length() - 1)
-//					return x;
-//			}
-//		}
-//	}
-//	return 0;
-//}
+int String::findsubstring(char *sub)
+{
+	String tmp = String(sub);
+	bool match = false;
+
+	for (int x = 0; x < this->m_length; x++)
+	{
+		if (this->m_data[x] == sub[0])
+		{
+			for (int j = 0; j < tmp.Length(); j++)
+			{
+				if (this->m_data[x + j] == tmp.m_data[j])
+				{
+					match = true;
+				}
+				else
+				{
+					match = false;
+				}
+				if (j == tmp.Length() - 1)
+					return x;
+			}
+		}
+	}
+	return 0;
+}
 
 //.10)
-bool String::findSubStringIndex(int input, char * sub)
+bool String::findSubStringIndex(char input, char * sub)
 {
 	String temp = String(sub);
 	bool index = false;
@@ -241,3 +239,8 @@ void String::setstring(char set[])
 	m_length = tmp.Length();
 	
 }
+
+//bool String::findSubStringIndex(char input, char * sub)
+//{
+//	return false;
+//}

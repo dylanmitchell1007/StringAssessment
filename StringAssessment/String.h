@@ -21,12 +21,12 @@ public:
 	bool compare(String str);
 	void append(String str);
 	void prepend(String str);
-	bool Up();
-	bool Low();
+	char *Up();
+	char *Low();
 	bool findsubstring();
-	int findsubstring(char *input);
+	int findsubstring(char *sub);
 	void setstring(char[]);
-	bool findSubStringIndex(int, char *);
+	bool findSubStringIndex(char input, char * sub);
 	const char * constCStyle();
 
 
