@@ -12,6 +12,9 @@ int main()
 	cin >> T;
 	cin >> x;
 
+	const char* sentence = "this is a sentence";
+	
+
 	String firstString = String(T);
 	String secondString = String(x);
 	std::cout << "Length of first Entry: " << firstString.Length() << "\n \n";

@@ -1,4 +1,5 @@
 #include<iostream>
+#include <cassert>
 #include "String.h"
 
 
@@ -25,9 +26,10 @@ int String::Length()
 char String::index(int T)
 {
 
-	
-	return m_data[T];
-
+	if (T >= 0 && T < Length())
+	{
+		return m_data[T];
+	}
 
 
 
@@ -43,11 +45,7 @@ bool String::compare(String str)
 	for (int x = 0; x++;)
 	{
 		equal = (m_data[x] == str.m_data[x]) ? true : false;
-		if (equal == false)
-		{
-			
-			break;
-		}
+		
 		if (equal == true)
 		{
 			break;
