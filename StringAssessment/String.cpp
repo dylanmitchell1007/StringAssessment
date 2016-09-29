@@ -22,11 +22,11 @@ int String::Length()
 }
 
 //2.)
-char String::index(int Place)
+char String::index(int T)
 {
 
-	std::cout << "Print at Index: " << m_data[Place] << "\n \n";
-	return m_data[Place];
+	
+	return m_data[T];
 
 
 
@@ -45,12 +45,11 @@ bool String::compare(String str)
 		equal = (m_data[x] == str.m_data[x]) ? true : false;
 		if (equal == false)
 		{
-			std::cout << m_data;
+			
 			break;
 		}
 		if (equal == true)
 		{
-			std::cout << "";
 			break;
 		}
 
@@ -59,7 +58,7 @@ bool String::compare(String str)
 }
 
 //.4)
-void String::append(String str)
+char * String::append(String str)
 {
 	int OriginalLength = this->m_length;
 	int x;
@@ -68,40 +67,33 @@ void String::append(String str)
 		m_data[OriginalLength + x] = str.m_data[x];
 	}
 	m_data[OriginalLength + x] = '\0';
-	std::cout << "\n \n";
 	for (int in = 0; m_data[in] != '\0'; in++)
 	{
-		std::cout << m_data[in];
+		return m_data;
 	}
-	std::cout << "\n \n";
 }
 
 //.5) 
-void String::prepend(String str)
+char * String::prepend(String str)
 {
 	
 	int OriginalLength = this-> m_length;
 	int t;
-	for (t = 0; t < m_length; ++t)
+	for (t = 0; t <= m_length; ++t)
 	{
 		m_data[OriginalLength + t] = str.m_data[t];
 	}
 	m_data[OriginalLength + t] = '\0';
-	std::cout << str.m_data;
-	for (int in = 0; m_data[in] != '\0'; in++)
-	{
-		m_data[t] = 0;
-		std::cout << m_data[in];
-	}
-	std::cout << "\n \n";
+	return m_data;
+
+
 }
 //.6)
 
 const char * String::constCStyle()
 {
 	const char * constCStyle = m_data;
-	std::cout << constCStyle;
-	return constCStyle;
+	return  constCStyle;
 }
 
 //.7)
@@ -162,7 +154,7 @@ bool String::findsubstring()
 			find = false;
 		}
 	}
-	std::cout << "SubString: " << find << "\n \n";
+
 	return find;
 }
 
@@ -217,15 +209,10 @@ bool String::findSubStringIndex(char input, char * sub)
 			index = false;
 		}
 	}
-	std::cout << "SubString at Index: " << index << "\n \n";
+	
 	return index;
 }
-//.11)
-//NEED HELP WITH THIS ONE.... MULTIPLE ATTEMPTS AND FRUSTRATING ERRORS.
-//CODE WAS SO BAD I JUST DELETED IT....
-//Syntax err
 
-//.12) 
 
 
 void String::setstring(char set[])
@@ -239,8 +226,3 @@ void String::setstring(char set[])
 	m_length = tmp.Length();
 	
 }
-
-//bool String::findSubStringIndex(char input, char * sub)
-//{
-//	return false;
-//}
